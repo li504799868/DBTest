@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url">
+            jdbc:mysql://localhost:3306/shopping?useUnicode=true&amp;characterEncoding=UTF-8
+        </property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">lizhipeng</property>
+
+        <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+        <property name="hbm2ddl.auto">update</property>
+
+        <!-- 配置二次缓存 -->
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.provider_configuration_file_resource_path">ehcache.xml</property>
+        <property name="hibernate.cache.region.factory_class">
+            org.hibernate.cache.ehcache.internal.SingletonEhcacheRegionFactory
+        </property>
+        <property name="hibernate.cache.ehcache.missing_cache_strategy">create</property>
+        <!--org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory-->
+
+        <mapping class="bean.Address"/>
+        <mapping class="bean.Car"/>
+        <mapping class="bean.Goods"/>
+
+        <mapping class="bean.oto_bpk.Me"/>
+        <mapping class="bean.oto_bpk.You"/>
+        <mapping class="bean.mto.Student"/>
+        <mapping class="bean.mto.Class"/>
+        <mapping class="bean.mtm.Teacher"/>
+
+    </session-factory>
+</hibernate-configuration>
